@@ -7,6 +7,7 @@ import Chart from './Chart';
 import LastMovieInDb from './LastMovieInDb';
 import GenresInDB from './GenresInDb'
 import NotFound from './NotFound';
+import SearchMovies from './SearchMovies';
 import { Routes, Route } from 'react-router-dom';
 
 /* import GenresInDb from './GenresInDb' */
@@ -25,6 +26,7 @@ function App() {
                 <Route path='/lastmovie' element={<LastMovieInDb/>}/>
                 <Route path='/genres' element={<GenresInDB/>}/>
                 <Route path='/content' element={<Chart/>}/>
+                <Route path='/search' element={<SearchMovies/>}/>
                 <Route path='*' element={<NotFound/>}/>
               </Routes>
             </div>

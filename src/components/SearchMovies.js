@@ -1,6 +1,6 @@
 import React from 'react';
 
-import noPoster from '../assets/images/no-poster.jpg';
+import noPoster from '../assets/images/descarga.jpg';
 
 function SearchMovies(){
 
@@ -20,7 +20,7 @@ function SearchMovies(){
 	const keyword = 'PELÍCULA DEMO';
 
 	// Credenciales de API
-	const apiKey = 'X'; // Intenta poner cualquier cosa antes para probar
+	const apiKey = '93f29207'; // Intenta poner cualquier cosa antes para probar
 
 	return(
 		<div className="container-fluid">
@@ -56,7 +56,7 @@ function SearchMovies(){
 												<div className="text-center">
 													<img 
 														className="img-fluid px-3 px-sm-4 mt-3 mb-4" 
-														src={movie.Poster}
+														src={movie.Poster === "N/A" ? noPoster : movie.Poster}
 														alt={movie.Title} 
 														style={{ width: '90%', height: '400px', objectFit: 'cover' }} 
 													/>
