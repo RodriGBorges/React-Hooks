@@ -1,12 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import noPoster from '../assets/images/descarga.jpg';
 
 function SearchMovies(){
 
+    const form = useRef()
+    const input = useRef()
+    const [keyword, setKeyword] = useState(["action"]);
     const [movies, setMovies] = useState([])
     
-	const keyword = 'action';
+    const valor = () => {
+        setKeyword(input.current.value)
+    }
+
+    const buscarPelis = (event) => {
+        event.preventDefault()
+    }
+    
+    
 	// Credenciales de API
 	const apiKey = '93f29207'; // Intenta poner cualquier cosa antes para probar
 
@@ -18,7 +29,7 @@ function SearchMovies(){
                 setMovies(data.Search)
             })
             .catch(error => console.log(error));
-    }, [])
+    }, [valor])
 
 	return(
 		<div className="container-fluid">
@@ -28,10 +39,10 @@ function SearchMovies(){
 					<div className="row my-4">
 						<div className="col-12 col-md-6">
 							{/* Buscador */}
-							<form method="GET">
+							<form onSubmit={buscarPelis} method="GET" ref={form}>
 								<div className="form-group">
 									<label htmlFor="">Buscar por título:</label>
-									<input type="text" className="form-control" />
+									<input onBlur={valor} ref={input} type="text" className="form-control" />
 								</div>
 								<button className="btn btn-info">Search</button>
 							</form>
